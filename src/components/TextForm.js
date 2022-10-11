@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 
 export default function TextForm(props) {
     const handleUpClick = () => {
-        // console.log("Uppercase was clicked: " + text);
         setText(text.toUpperCase());
         props.showAlert("Convert to Uppercase!", "success");
     }
@@ -42,7 +41,6 @@ export default function TextForm(props) {
     }
 
     const handleOnChange = (event) => {
-        // console.log("On Change");
         setText(event.target.value);
     };
     const [text, setText] = useState('');
@@ -66,7 +64,7 @@ export default function TextForm(props) {
             <p>{text.split(" ").length} Word and {text.length} Characters</p>
             <p>{0.008 * text.split(" ").length} Minutes to Read</p>
             <h2>Preview</h2>
-            <p>{text.length>0 ? text : "Enter something in the textbox above to preview it here"}</p>
+            <p>{text.length>0 ? text : "Enter something in the text-box above to preview it here"}</p>
         </div>
       </>
     );
