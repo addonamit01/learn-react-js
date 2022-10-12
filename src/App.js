@@ -7,8 +7,7 @@ import TextForm from "./components/TextForm";
 import {
   BrowserRouter as Router,
   Routes,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 
 function App() {
@@ -26,7 +25,19 @@ function App() {
 		}, 1500);
 	}
 
-	const toggleMode = () => {
+	const removeBodyClasses = () => { 
+		document.body.classList.remove('bg-success');
+		document.body.classList.remove('bg-primary');
+		document.body.classList.remove('bg-danger');
+		document.body.classList.remove('bg-warning');
+		document.body.classList.remove('bg-light');
+		document.body.classList.remove('bg-dark');
+	}
+
+	const toggleMode = (cls) => {
+		removeBodyClasses();
+		console.log(cls);
+		document.body.classList.add('bg-' + cls);
 		if (mode === 'light') {
 			setMode('dark');
 			document.body.style.backgroundColor = '#042743';
@@ -43,11 +54,11 @@ function App() {
 		<>
 			<Router>
 				<Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} />
-				<Alert alert={alert} />
+				<Alert alert={alert}/>
 				<div className="container my-3">
 					<Routes>
-						<Route exact path="/" element={<TextForm heading="Enter the text analyze below" mode={mode} showAlert={showAlert} />}/>
-						<Route exact path="/about" element={<About />}/>
+						<Route exact path="/" element={<TextForm heading="Try TextUtils - Word Counter, Character Counter, Remove Extra Spaces" mode={mode} showAlert={showAlert} />}/>
+						<Route exact path="/about" element={<About mode={mode} />}/>
 					</Routes>
 				</div>
 			</Router>
